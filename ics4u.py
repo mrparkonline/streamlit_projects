@@ -1,24 +1,21 @@
 import streamlit as st
+import gspread
+
+# Initialize gspread
+GC_API = st.secrets["google_cloud"]
+gc = gspread.api_key(GC_API)
+gc_file = gc.open_by_key("1m6eH5rgyZY4mqEB7pEgFpW5SaCRobE3Oo7IBNInjOjc")
+sheet = gc_file.sheet1
+
+records = sheet.get_all_records() # List of Dictionaries
+# END OF GSPREAD
 
 # Title
-st.title("ICS4U Landing Page")
-st.write("Grade 12 Computer Science Content.")
+st.title("ICS4U Sprints")
 # END OF TITLE
 
 # Content
-# Navigation:
-tab1, tab2, tab3, tab4 = st.tabs(["U1: Python Programming", "U2: Algorithmic Thinking", "U3: Object Oriented Programming", "U4: Databases"])
-
-with tab1:
-    st.write("Python Programming")
-
-with tab2:
-    st.write("Algorithmic Thinking")
-
-with tab3:
-    st.write("Object Oriented Programming")
-
-with tab4:
-    st.write("Databases")
+for sprint in records:
+    st.write(sprint)
 
 # END OF CONTENT
