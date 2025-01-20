@@ -1,2 +1,3 @@
-# streamlit_projects
-Public Simple Streamlit Projects
+# Streamlit Projects
+
+Public Simple [Streamlit](https://streamlit.io/) Projects
