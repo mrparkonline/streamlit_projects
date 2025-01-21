@@ -14,7 +14,11 @@ records = sheet.get_all_records() # List of Dictionaries
 # END OF GSPREAD
 
 # Streamlit Page Config
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="Sprints",
+    page_icon=":alarm_clock:"
+    layout="wide"
+)
 
 # Title
 st.title("ICS4U Sprints")
