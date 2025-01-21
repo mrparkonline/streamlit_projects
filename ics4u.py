@@ -13,21 +13,34 @@ sheet = gc_file.sheet1
 records = sheet.get_all_records() # List of Dictionaries
 # END OF GSPREAD
 
+# Streamlit Page Config
+st.set_page_config(layout="wide")
+
 # Title
 st.title("ICS4U Sprints")
 # END OF TITLE
 
-# Content
-# -- Sprint Keys
-# """
-# Sprint Keys
-# - "Timestamp" : when it was created
-# - "Name" : name of the Sprint
-# - "InstructionLink" : link with the instructions
-# - "Priority" : priority value (integer) from 1 to 5
-# - "DueDate" : DD/MM/YEAR 24H:00M
-# """
+# Links
+link1, link2, link3, link4 = st.columns(4, border=True)
 
+with link1:
+    st.write("Unit 1: Python Programming")
+    st.write("[Textbook Link](https://mrparkonline.gitbook.io/guide-to-high-school-computer-science/python-programming)")
+
+with link2:
+    st.write("Unit 2: Algorithmic Thinking")
+    st.write("[Textbook Link](https://mrparkonline.gitbook.io/guide-to-high-school-computer-science/python-programming/introduction-to-algorithmic-thinking)")
+
+with link3:
+    st.write("Unit 3: Object Oriented Programming")
+    st.write("[Textbook Link](https://mrparkonline.gitbook.io/guide-to-high-school-computer-science/python-programming/introduction-to-algorithmic-thinking)")
+
+with link4:
+    st.write("Unit 4: Databases")
+    st.write("[Textbook Link](https://mrparkonline.gitbook.io/guide-to-high-school-computer-science/python-and-databases)")
+# End of Links
+
+# Sorting Mode
 sort_mode = st.radio(
     label="Sort Sprints By:",
     options=["Creation Date", "Priority", "Due Date"],
@@ -38,6 +51,7 @@ if sort_mode == "Priority":
     records = sorted(records, key=lambda x:x["Priority"], reverse=True)
 elif sort_mode == "Due Date":
     records = sorted(records, key=lambda x: datetime.strptime(x["DueDate"].split(" ")[0], "%m/%d/%Y"))
+# END OF SORTING MODE
 
 for i, sprint in enumerate(records):
     with st.container(border=True, key=f"row_{i}"):
