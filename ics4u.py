@@ -16,7 +16,7 @@ records = sheet.get_all_records() # List of Dictionaries
 # Streamlit Page Config
 st.set_page_config(
     page_title="Sprints",
-    page_icon=":alarm_clock:"
+    page_icon=":alarm_clock:",
     layout="wide"
 )
 
