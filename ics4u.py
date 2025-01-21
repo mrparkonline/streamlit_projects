@@ -37,7 +37,7 @@ with link2:
 
 with link3:
     st.write("Unit 3: Object Oriented Programming")
-    st.write("[Textbook Link](https://mrparkonline.gitbook.io/guide-to-high-school-computer-science/python-programming/introduction-to-algorithmic-thinking)")
+    st.write("[Textbook Link](https://mrparkonline.gitbook.io/guide-to-high-school-computer-science/python-programming/object-oriented-programming)")
 
 with link4:
     st.write("Unit 4: Databases")
