@@ -10,7 +10,35 @@ gc = gspread.api_key(GC_API)
 gc_file = gc.open_by_key("1m6eH5rgyZY4mqEB7pEgFpW5SaCRobE3Oo7IBNInjOjc")
 sheet = gc_file.sheet1
 
-records = sheet.get_all_records() # List of Dictionaries
+def get_completed(a_list):
+    result = []
+    for table in a_list:
+        date_data = table["DueDate"].split(' ')
+        date = datetime.strptime(date_data[0], "%m/%d/%Y")
+        today = datetime.now()
+
+        if date < today:
+            result.append(table)
+    
+    return result
+# end of get_completed()
+
+def get_sprints(a_list):
+    result = []
+    for table in a_list:
+        date_data = table["DueDate"].split(' ')
+        date = datetime.strptime(date_data[0], "%m/%d/%Y")
+        today = datetime.now()
+
+        if date > today:
+            result.append(table)
+    
+    return result
+# end of get_sprints()
+
+records_init = sheet.get_all_records() # List of Dictionaries
+completed = get_completed(records_init) # Past Due
+records = get_sprints(records_init) # Still Due
 # END OF GSPREAD
 
 # Streamlit Page Config
@@ -69,5 +97,10 @@ for i, sprint in enumerate(records):
         
         with col3:
             st.write(f"**Due Date:** {sprint["DueDate"]}")
+
+# Completed Tasks:
+with st.expander("**Completed Sprints**"):
+    for sprint in completed:
+        st.write(f"**[{sprint["Name"]}]({sprint["InstructionLink"]})** was due: _{sprint["DueDate"].split(' ')[0]}._")
 
 # END OF CONTENT
