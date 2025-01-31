@@ -58,6 +58,7 @@ link1, link2, link3, link4 = st.columns(4, border=True)
 with link1:
     st.write("Unit 1: Python Programming")
     st.write("[Textbook Link](https://mrparkonline.gitbook.io/guide-to-high-school-computer-science/python-programming)")
+    st.write("[GitHub Repository](https://github.com/mrparkonline/marshall-py)")
 
 with link2:
     st.write("Unit 2: Algorithmic Thinking")
