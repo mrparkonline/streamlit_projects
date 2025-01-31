@@ -106,8 +106,8 @@ for i, sprint in enumerate(records):
 with st.expander("**Completed Sprints**"):
     for sprint in completed:
         if len(sprint["InstructionLink"]) < 2:
-                st.write(f"**{sprint["Name"]}** was due: _{sprint["DueDate"].split(' ')[0]}._")
-            else:
-                st.write(f"**[{sprint["Name"]}]({sprint["InstructionLink"]})** was due: _{sprint["DueDate"].split(' ')[0]}._")
+            st.write(f"**{sprint["Name"]}** was due: _{sprint["DueDate"].split(' ')[0]}._")
+        else:
+            st.write(f"**[{sprint["Name"]}]({sprint["InstructionLink"]})** was due: _{sprint["DueDate"].split(' ')[0]}._")
 
 # END OF CONTENT
