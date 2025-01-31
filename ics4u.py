@@ -91,7 +91,10 @@ for i, sprint in enumerate(records):
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            st.write(f"**[{sprint["Name"]}]({sprint["InstructionLink"]})**")
+            if len(sprint["InstructionLink"]) < 2:
+                st.write(f"**[{sprint["Name"]}]({sprint["InstructionLink"]})**")
+            else:
+                st.write(f"**{sprint["Name"]}**")
         
         with col2:
             st.write(f"**Priority:** {sprint["Priority"]}")
